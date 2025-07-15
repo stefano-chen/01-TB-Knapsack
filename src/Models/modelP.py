@@ -4,10 +4,13 @@ from gurobipy import Model, GRB, quicksum, Env
 
 class ModelP:
     def __init__(self, *, j, n, c, w, p, q, best_heu_value=0, last_exact_profit=float("+inf"), previous_solutions=None, ml):
+        self.env = Env(empty=True)
+        self.env.setParam("OutputFlag", 0)
+        self.env.setParam("TimeLimit", ml)
+        self.env.start()
+
         self.n = n
-        self.model = Model("ModelP")
-        self.model.setParam("OutputFlag", 0)
-        self.model.setParam("TimeLimit", ml)
+        self.model = Model("ModelP", env=self.env)
 
         self.x = self.model.addVars(n, vtype=GRB.BINARY, name="x")
 
@@ -26,4 +29,5 @@ class ModelP:
         result =  (self.model.Status == GRB.OPTIMAL, self.model.Status not in [GRB.INFEASIBLE, GRB.INF_OR_UNBD, GRB.UNBOUNDED],
                 [self.x[k].X for k in range(self.n)], self.model.ObjVal)
         self.model.dispose()
+        self.env.dispose()
         return result
