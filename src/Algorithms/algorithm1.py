@@ -2,7 +2,7 @@ from Models.modelP import ModelP
 import time
 from Algorithms.utils import calculate_expected_profit
 
-def iteractive_algorithm_p(n_items, capacity, weights, profits, survive_probs, mt):
+def iterative_algorithm_p(n_items, capacity, weights, profits, survive_probs, mt):
     best_heu_sol = None
     best_heu_val = 0
     last_exact_profit = float("+inf")
