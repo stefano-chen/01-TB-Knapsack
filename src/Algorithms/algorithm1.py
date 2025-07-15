@@ -9,7 +9,7 @@ def iterative_algorithm_p(n_items, capacity, weights, profits, survival_probs, m
     j = 0
     start_time = time.time()
     previous_solutions = []
-    ub = last_exact_profit
+    ub = float("+inf")
 
     model = ModelP(j=0, n=n_items, c=capacity, w=weights, p=profits, q=survival_probs,
                    best_heu_value=best_heu_val, last_exact_profit=last_exact_profit,
@@ -34,5 +34,5 @@ def iterative_algorithm_p(n_items, capacity, weights, profits, survival_probs, m
             model = ModelP(j=j, n=n_items, c=capacity, w=weights, p=profits, q=survival_probs,
                            best_heu_value=best_heu_val, last_exact_profit=last_exact_profit,
                            previous_solutions=previous_solutions, ml=1)
-    return best_heu_sol, ub , j , (time.time() - start_time)
+    return best_heu_sol, best_heu_val, ub , j , (time.time() - start_time)
 
