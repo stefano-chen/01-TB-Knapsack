@@ -39,6 +39,16 @@ To create a virtual environment use the following command
 ```bash
     python -m venv .venv
 ```
+### Activate Virtual Environment
+On Windows, run:
+```bash
+    .venv\Scripts\activate
+```
+
+On Unix or MacOS, run:
+```bash
+    source .venv/bin/activate
+```
 
 ## Install the dependencies
 ```bash
