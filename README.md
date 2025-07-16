@@ -58,7 +58,7 @@ On Unix or MacOS, run:
 ## To run test.py
 This file is used to test the proposed models/algorithms on simple instances
 ```bash
-    cd test
+    cd src
 ```
 ```bash
     python test.py
@@ -68,7 +68,7 @@ This file is used to test the proposed models/algorithms on simple instances
 This file is used to test the proposed models/algorithms on instances of increasing size.\
 After the script execution, in the **results folder** you can find the logs, the metrics and plots for both the algorithms
 ```bash
-    cd test
+    cd src
 ```
 ```bash
     python scalability.py
