@@ -1,5 +1,6 @@
 from Models.modelS import ModelS
 import time
+import math
 from Algorithms.utils import calculate_expected_profit, solve_deterministic_knapsack
 
 def iterative_algorithm_s(n_items, capacity, weights, profits, survival_probs, mt):
@@ -18,9 +19,7 @@ def iterative_algorithm_s(n_items, capacity, weights, profits, survival_probs, m
     while (time.time() - start_time) < mt:
         optimality, x, obj_value = model.optimize()
 
-        if optimality:
-            last_exact_probability = obj_value
-        else:
+        if not optimality:
             is_heuristic = False
             break
 
@@ -31,6 +30,7 @@ def iterative_algorithm_s(n_items, capacity, weights, profits, survival_probs, m
         if val > best_heu_val:
             best_heu_sol = z
             best_heu_val = val
+        last_exact_probability = math.prod(q for zi, q in zip(z, survival_probs) if zi)
         previous_solutions.append(x)
         j+=1
         model = ModelS(j=j, n=n_items, c=capacity, w=weights, p=profits, q=survival_probs,

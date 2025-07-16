@@ -25,7 +25,10 @@ class ModelP:
 
     def optimize(self):
         self.model.optimize()
-        result =  (self.model.Status == GRB.OPTIMAL, [self.x[k].X for k in range(self.n)], self.model.ObjVal)
+        optimality = self.model.Status == GRB.OPTIMAL
+        solution = [self.x[k].X for k in range(self.n)] if optimality else None
+        obj_value = self.model.ObjVal if optimality else None
+        result = (optimality, solution, obj_value)
         self.model.dispose()
         self.env.dispose()
         return result

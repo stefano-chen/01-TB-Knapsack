@@ -18,14 +18,17 @@ class ModelS:
 
         self.model.addConstr(quicksum([w[k]*self.x[k] for k in range(n)]) <= c)
 
-        self.model.addConstr(quicksum([p[k]*self.x[k] for k in range(n)]) >= (best_heu_value/last_exact_probability)+2.220446049250313e-5)
+        self.model.addConstr(quicksum([p[k]*self.x[k] for k in range(n)]) >= (best_heu_value / last_exact_probability) + 2.220446049250313e-5)
 
         for i in range(j):
-            self.model.addConstr(quicksum([self.x[k] if previous_solutions[i][k] else (1-self.x[k]) for k in range(n)]) <= n-1)
+            self.model.addConstr(quicksum([self.x[k] if previous_solutions[i][k] == 1 else (1-self.x[k]) for k in range(n)]) <= n-1)
 
     def optimize(self):
         self.model.optimize()
-        result =  (self.model.Status == GRB.OPTIMAL, [self.x[k].X for k in range(self.n)], self.model.ObjVal)
+        optimality = self.model.Status == GRB.OPTIMAL
+        solution = [self.x[k].X for k in range(self.n)] if optimality else None
+        obj_value = self.model.ObjVal if optimality else None
+        result =  (optimality, solution, obj_value)
         self.model.dispose()
         self.env.dispose()
         return result
