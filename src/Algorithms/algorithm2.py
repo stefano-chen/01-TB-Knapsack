@@ -23,13 +23,16 @@ def iterative_algorithm_s(n_items, capacity, weights, profits, survival_probs, m
             is_heuristic = False
             break
 
+        # solve a deterministic knapsack problem with unselected non-bomb items and residual capacity
         y = solve_deterministic_knapsack(x, weights, profits, capacity, survival_probs)
+        # elementwise or operator between two sets of variables
         z = [(x_i or y_i) for x_i,y_i in zip(x,y)]
 
         val = calculate_expected_profit(z, profits, survival_probs)
         if val > best_heu_val:
             best_heu_sol = z
             best_heu_val = val
+        # probability of survival for this iteration
         last_exact_probability = math.prod(q for zi, q in zip(z, survival_probs) if zi)
         previous_solutions.append(x)
         j+=1

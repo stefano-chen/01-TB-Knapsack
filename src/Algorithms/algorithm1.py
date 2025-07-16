@@ -15,6 +15,7 @@ def iterative_algorithm_p(n_items, capacity, weights, profits, survival_probs, m
                    best_heu_value=best_heu_val, last_exact_profit=last_exact_profit,
                    previous_solutions=previous_solutions, ml=1)
 
+    # last_exact_profit can be seen as an upper bound to the optimal
     while best_heu_val < last_exact_profit and (time.time() - start_time) < mt:
         optimality, sol, obj_value = model.optimize()
 
