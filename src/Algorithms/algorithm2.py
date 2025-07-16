@@ -2,7 +2,7 @@ from Models.modelS import ModelS
 import time
 from Algorithms.utils import calculate_expected_profit, solve_deterministic_knapsack
 
-def iterative_algorithm_p(n_items, capacity, weights, profits, survival_probs, mt):
+def iterative_algorithm_s(n_items, capacity, weights, profits, survival_probs, mt):
     best_heu_sol = None
     best_heu_val = 0
     last_exact_probability = 1

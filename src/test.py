@@ -1,4 +1,5 @@
 from Algorithms.algorithm1 import iterative_algorithm_p
+from Algorithms.algorithm2 import iterative_algorithm_s
 
 # 01 Time-bomb Knapsack testing instance
 n_items = 4
