@@ -8,7 +8,7 @@ Volume 178,\
 107010,\
 ISSN 0305-0548,\
 https://doi.org/10.1016/j.cor.2025.107010.\
-(https://www.sciencedirect.com/science/article/pii/S0305054825000383)\
+(https://www.sciencedirect.com/science/article/pii/S0305054825000383) \
 Abstract: A stochastic version of the 0–1 Knapsack Problem recently introduced in the literature and named the 0–1 Time-Bomb Knapsack Problem is the topic of the present work. In this problem, in addition to profit and weight, each item is characterized by a probability of exploding, and therefore destroying all the contents of the knapsack, in case it is loaded. The optimization aims at maximizing the expected profit of the selected items, which takes into account also the probabilities of explosion, while fulfilling the capacity constraint. The problem has real-world applications in logistics and cloud computing. In this work, two model-based algorithms are introduced. They are based on partial linearizations of a non-linear model describing the problem. Extensive computational results on the instances available in the literature are presented to position the new methods as the best-performing ones, while comparing against those previously proposed.\
 Keywords: 0-1 Knapsack; Time-bomb; Model-based algorithms; Mixed integer linear programming
 
